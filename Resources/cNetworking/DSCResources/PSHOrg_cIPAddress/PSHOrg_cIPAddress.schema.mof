@@ -1,5 +1,5 @@
 [ClassVersion("1.0.0"), FriendlyName("cIPAddress")] 
-class MSFT_cIPAddress : OMI_BaseResource
+class PSHOrg_cIPAddress : OMI_BaseResource
 {
   [Key] string IPAddress;
   [Key] string InterfaceAlias;
