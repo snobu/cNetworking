@@ -187,3 +187,4 @@ function ValidateProperties
 #  FUNCTIONS TO BE EXPORTED 
 Export-ModuleMember -function Get-TargetResource, Set-TargetResource, Test-TargetResource
 
+

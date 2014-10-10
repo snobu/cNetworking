@@ -6,3 +6,4 @@ class PSHOrg_cDNSServerAddress : OMI_BaseResource
   [Write,ValueMap{"IPv4", "IPv6"},Values{"IPv4", "IPv6"}] string AddressFamily;
 };
 
+
