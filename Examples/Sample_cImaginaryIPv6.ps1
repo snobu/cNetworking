@@ -24,7 +24,7 @@ Configuration Sample_ImaginaryIPv6
         [ValidateSet("Default","Enabled","Disabled")]
         [String]$ISATAP
         #>
-	)
+    )
 
     Import-DscResource -Module cNetworking
 
