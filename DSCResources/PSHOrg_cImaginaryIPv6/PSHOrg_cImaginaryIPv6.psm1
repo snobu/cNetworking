@@ -55,19 +55,16 @@ function Set-TargetResource
 	)
 
         Write-Verbose "Bringing 6to4 into desired state $SixToFour.."
-        Set-Net6to4Configuration -State $SixToFour -ErrorAction Continue -PassThru |
-                Select-Object Description, State | Format-List
+        Set-Net6to4Configuration -State $SixToFour -ErrorAction Continue
 
         Write-Verbose "Bringing Teredo into desired state $Teredo.."
-        Set-NetTeredoConfiguration -Type $Teredo -ErrorAction Continue -PassThru |
-                Select-Object Description, Type | Format-List
+        Set-NetTeredoConfiguration -Type $Teredo -ErrorAction Continue
 
         Write-Verbose "Bringing ISATAP into desired state $ISATAP.."
         Set-NetIsatapConfiguration -ResolutionState $ISATAP -ErrorAction Continue
-        Set-NetIsatapConfiguration -State $ISATAP -ErrorAction Continue -PassThru |
-                Select-Object Description, State, ResolutionState | Format-List
+        Set-NetIsatapConfiguration -State $ISATAP -ErrorAction Continue
 } #Set-TargetResource
-        
+
 
 function Test-TargetResource
 {
@@ -95,7 +92,7 @@ function Test-TargetResource
         Write-Verbose "SixToFour is $((Get-Net6to4Configuration).State). Desired: $SixToFour"
         Write-Verbose "Teredo is $((Get-NetTeredoConfiguration).Type). Desired: $Teredo"
         Write-Verbose "ISATAP is $((Get-NetIsatapConfiguration).State). Desired: $ISATAP"
-        Write-Verbose "ISATAP ResolutionState is $((Get-NetIsatapConfiguration).ResolutionState). Should be the same as Desired ISATAP, $((Get-NetIsatapConfiguration).ResolutionState))"
+        Write-Verbose "ISATAP ResolutionState is $((Get-NetIsatapConfiguration).ResolutionState). Should be the same as Desired ISATAP ($ISATAP)."
 
         #If compliant, return $True, else $False
         $SixToFour -eq (Get-Net6to4Configuration).State -and
